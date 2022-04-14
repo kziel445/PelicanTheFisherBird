@@ -28,7 +28,5 @@ public class ruchchorzow : MonoBehaviour
         {
             transform.Translate(-1f * Time.deltaTime , 0, 0, Space.World);
         }
-        
-        transform.Translate(1f * Time.deltaTime , 0, 0, Space.World);
     }
 }
