@@ -5,15 +5,7 @@ using UnityEngine;
 public class ruchchorzow : MonoBehaviour
 {
     [SerializeField] float jumpModificator = 2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log(transform.position);
-        Debug.Log(transform.rotation.eulerAngles);
-        Debug.Log(transform.localScale);
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.touchCount > 0)
