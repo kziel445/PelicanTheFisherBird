@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class GameAsstes : MonoBehaviour
 {
-    
-
     private static GameAsstes instance;
+
+    public static GameAsstes GetInstance()
+    {
+        return instance;
+    }
+
+    public Transform pfSky;
+    public Transform pfWater;
+
     private void Awake()
     {
         instance = this;
     }
 
-    private static GameAsstes GetInstance()
-    {
-        return instance;
-    }
+
+
     
-    [SerializeField] Transform pfSky;
-    [SerializeField] Transform pfWater;
 }
