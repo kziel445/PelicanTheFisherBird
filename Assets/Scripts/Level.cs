@@ -18,18 +18,20 @@ public class Level : MonoBehaviour
     //private const float CAMERA_Y_SIZE = 10f;
 
     [SerializeField] private float skyMovingSpeed = 1;
-    [SerializeField] private float skyHeight = 1;
+    [SerializeField] private float skyHeight = 0;
     Background skyList;
     
     [SerializeField] private float waterMovingSpeed = 6;
-    [SerializeField] private float waterHight = 1;
+    [SerializeField] private float waterHeight = 0;
     Background waterList;
 
 
     private void Awake()
     {
-        skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, skyMovingSpeed);
-        waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, waterMovingSpeed);
+        skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, skyMovingSpeed, skyHeight);
+        waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, waterMovingSpeed, waterHeight);
+        Transform fish = Instantiate(GameAsstes.GetInstance().pfFish, new Vector3(-1, -3.6f, 0), Quaternion.identity);
+        Fish fishClass = new Fish(fish.transform, 2, 10, 100);
 
     }
     private void Update()
@@ -39,14 +41,14 @@ public class Level : MonoBehaviour
     }
 
     // create backgrounds from 2 the same prefabs(only works when one prefab size > screen size)
-    public Background SpawnInitialBackgrounds(Transform prefab, float speedModificator)
+    public Background SpawnInitialBackgrounds(Transform prefab, float speedModificator, float height)
     {
         List<Transform> listBackgrounds = new List<Transform>();
         float prefabWidth = prefab.GetComponent<SpriteRenderer>().size.x * prefab.transform.localScale.x;
 
-        Transform prefabInit = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Transform prefabInit = Instantiate(prefab, new Vector3(0, height, 0), Quaternion.identity);
         listBackgrounds.Add(prefabInit);        
-        prefabInit = Instantiate(prefab, new Vector3(prefabWidth, 0, 0), Quaternion.identity);
+        prefabInit = Instantiate(prefab, new Vector3(prefabWidth, height, 0), Quaternion.identity);
         listBackgrounds.Add(prefabInit);
 
         return new Background(listBackgrounds, speedModificator);
