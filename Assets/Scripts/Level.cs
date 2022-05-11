@@ -10,12 +10,12 @@ public class Level : MonoBehaviour
     {
         return instance;
     }
-
+    
     // TODO: 
     // add to camera function or something
     // cameraSize = new Vector2(Camera.main.aspect* Camera.main.orthographicSize* 2f, Camera.main.orthographicSize* 2f);
-    private const float CAMERA_X_SIZE = 4.62f;
-    private const float CAMERA_Y_SIZE = 10f;
+    //private const float CAMERA_X_SIZE = 4.62f;
+    //private const float CAMERA_Y_SIZE = 10f;
 
     [SerializeField] private float skyMovingSpeed = 1;
     [SerializeField] private float skyHeight = 1;
@@ -53,32 +53,5 @@ public class Level : MonoBehaviour
     }
 }
 
-public class Background
-{
-    private float speedModificator;
-    private List<Transform> backgroundsList;
-    private float leftBorder;
-    private float rightBorder;
-
-    public Background(List<Transform> backgroundsList, float speedModificator)
-    {
-        this.speedModificator = speedModificator;
-        this.backgroundsList = backgroundsList;
-        this.leftBorder = backgroundsList[0].position.x - backgroundsList[0].GetComponent<SpriteRenderer>().size.x * backgroundsList[0].transform.localScale.x;
-        this.rightBorder = backgroundsList[0].position.x + backgroundsList[0].GetComponent<SpriteRenderer>().size.x * backgroundsList[0].transform.localScale.x;
-    }
-    
-    public void Move()
-    {
-        foreach(Transform background in backgroundsList)
-        {
-            background.position += new Vector3(-1, 0, 0) * speedModificator * Time.deltaTime;
-            if(background.position.x < leftBorder)
-            {               
-                background.position = new Vector3(rightBorder - .5f, background.position.y, background.position.z);
-            }
-        }
-    }
-}
 
 
