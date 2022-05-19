@@ -12,8 +12,9 @@ public class Background
     {
         this.speedModificator = speedModificator;
         this.backgroundsList = backgroundsList;
-        this.leftBorder = backgroundsList[0].position.x - backgroundsList[0].GetComponent<SpriteRenderer>().size.x * backgroundsList[0].transform.localScale.x;
-        this.rightBorder = backgroundsList[0].position.x + backgroundsList[0].GetComponent<SpriteRenderer>().size.x * backgroundsList[0].transform.localScale.x;
+        float spriteScaledSize = backgroundsList[0].GetComponent<SpriteRenderer>().size.x * backgroundsList[0].transform.localScale.x;
+        this.leftBorder = backgroundsList[0].position.x - spriteScaledSize;
+        this.rightBorder = backgroundsList[0].position.x + spriteScaledSize;
     }
 
     public void Move()
