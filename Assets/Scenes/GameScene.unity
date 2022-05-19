@@ -224,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 1479668752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.11, y: -0.14, z: 1}
-  m_LocalScale: {x: 0.12339805, y: 0.12339805, z: 0.12339805}
+  m_LocalScale: {x: 0.1233981, y: 0.12339805, z: 0.12339805}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -360,5 +360,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
+      propertyPath: pfFish.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
+      propertyPath: pfFish.Array.data[0]
+      value: 
+      objectReference: {fileID: 5465846465832778430, guid: dd301ca7dbb587a4183f9d4fbd54a622, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}

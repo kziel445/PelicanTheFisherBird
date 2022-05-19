@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background
+public class Background : IBackgroundElements
 {
     private float speedModificator;
     private List<Transform> backgroundsList;
