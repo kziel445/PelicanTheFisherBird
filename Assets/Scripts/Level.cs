@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
     //private const float CAMERA_X_SIZE = 4.62f;
     //private const float CAMERA_Y_SIZE = 10f;
 
+    //background
     [SerializeField] private float skyMovingSpeed = 1;
     [SerializeField] private float skyHeight = 0;
     Background skyList;
@@ -25,19 +26,34 @@ public class Level : MonoBehaviour
     [SerializeField] private float waterHeight = 0;
     Background waterList;
 
+    // fishes
+    private const float FISH_MAX_SPAWN_DELAY = 4;
+    private const float FISH_MIN_SPAWN_DELAY = 4;
+    private const float FISH_MAX_SPEED = 4;
+    private const float FISH_MIN_SPEED = 4;
+    private const float FISH_MOVING_RIGHT_PERCENT_CHANCE = .5f;
+    private const float FISH_MAX_Y = -2.8f;
+    private const float FISH_MIN_Y = -4.5f;
+
+    private List<Fish> fishList;
+    float fishTimeSpawner;
+    float speedModificator;
+    int randomFishIndex;
+    Vector3 startPosition;
+    bool goRight;
 
     private void Awake()
     {
         skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, skyMovingSpeed, skyHeight);
         waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, waterMovingSpeed, waterHeight);
-        Transform fish = Instantiate(GameAsstes.GetInstance().pfFish, new Vector3(-1, -3.6f, 0), Quaternion.identity);
-        Fish fishClass = new Fish(fish.transform, 2, 10, 100);
-
+        fishList = new List<Fish>();       
     }
     private void Update()
     {
         skyList.Move();
         waterList.Move();
+        FishMoving();
+        FishGenerator();
     }
 
     // create backgrounds from 2 the same prefabs(only works when one prefab size > screen size)
@@ -52,6 +68,38 @@ public class Level : MonoBehaviour
         listBackgrounds.Add(prefabInit);
 
         return new Background(listBackgrounds, speedModificator);
+    }
+
+    // all values based random const values min/max,
+    // speedModificator changed(speedModificator - waterSpeedModificator) when going right(going upstream),
+    // localScale changed when NOT going right
+    public void FishGenerator()
+    {
+        fishTimeSpawner -= Time.deltaTime;
+        if(fishTimeSpawner < 0)
+        {
+            fishTimeSpawner = Random.Range(FISH_MIN_SPAWN_DELAY, FISH_MAX_SPAWN_DELAY);
+            speedModificator = Random.Range(FISH_MIN_SPEED, FISH_MAX_SPEED);
+            randomFishIndex = Random.Range(0, GameAsstes.GetInstance().pfFish.Count);
+            startPosition = new Vector3(0, Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
+            if (Random.Range(0f, 1f) > FISH_MOVING_RIGHT_PERCENT_CHANCE)
+            {
+                goRight = true;
+                speedModificator = speedModificator - waterMovingSpeed  >= 0 ? speedModificator - waterMovingSpeed : 1;
+            }
+            else goRight = false;
+
+            Transform fish = Instantiate(GameAsstes.GetInstance().pfFish[randomFishIndex], startPosition, Quaternion.identity);
+            if (!goRight) fish.localScale = new Vector3(fish.localScale.x * -1, fish.localScale.y, fish.localScale.z);
+            fishList.Add(new Fish(fish, speedModificator, goRight));
+        }
+    }
+    public void FishMoving()
+    {
+        foreach (Fish fish in fishList)
+        {
+            fish.Move();
+        }
     }
 }
 
