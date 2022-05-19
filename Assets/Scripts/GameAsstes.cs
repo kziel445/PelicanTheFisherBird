@@ -13,7 +13,7 @@ public class GameAsstes : MonoBehaviour
 
     public Transform pfSky;
     public Transform pfWater;
-    public Transform pfFish;
+    public List<Transform> pfFish;
 
     private void Awake()
     {
