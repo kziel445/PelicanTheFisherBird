@@ -212,4 +212,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfSky: {fileID: 8902425159821201834, guid: 0635194cc1172fc4a9763401ddacc7af, type: 3}
   pfWater: {fileID: 967255114626073796, guid: 94473a050766ded4bb47ffcc7e8ad9b1, type: 3}
-  pfFish: {fileID: 5465846465832778430, guid: dd301ca7dbb587a4183f9d4fbd54a622, type: 3}
+  pfFish:
+  - {fileID: 5465846465832778430, guid: dd301ca7dbb587a4183f9d4fbd54a622, type: 3}
