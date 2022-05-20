@@ -10,14 +10,9 @@ public class Level : MonoBehaviour
     {
         return instance;
     }
-    
-    // TODO: 
-    // add to camera function or something
-    // cameraSize = new Vector2(Camera.main.aspect* Camera.main.orthographicSize* 2f, Camera.main.orthographicSize* 2f);
 
     // camera
     private const float CAMERA_X_SIZE = 4.62f;
-    private const float CAMERA_Y_SIZE = 10f;
 
     // background
     [SerializeField] private float skyMovingSpeed = 1;
@@ -101,7 +96,7 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < fishList.Count; i++)
         {
-            if (fishList[i].prefab.position.x > CAMERA_X_SIZE / 2 + 4 || fishList[i].prefab.position.x < -(CAMERA_X_SIZE / 2 + 4))
+            if (fishList[i].prefab.position.x > CAMERA_X_SIZE || fishList[i].prefab.position.x < CAMERA_X_SIZE)
             {
                 Destroy(fishList[i].prefab.gameObject);
                 fishList.Remove(fishList[i]);
