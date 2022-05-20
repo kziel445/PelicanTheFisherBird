@@ -6,6 +6,6 @@ public class plywanie : MonoBehaviour
 {
     void Update()
     {
-        transform.Translate(-0.5f *Time.deltaTime, 0, 0, Space.World);
+        transform.Translate(-1f *Time.deltaTime, 0, 0, Space.World);
     }
 }
