@@ -27,7 +27,7 @@ public class Level : MonoBehaviour
     private const float FISH_MAX_SPAWN_DELAY = 2;
     private const float FISH_MIN_SPAWN_DELAY = 1;
     private const float FISH_MAX_SPEED = 4;
-    private const float FISH_MIN_SPEED = 4;
+    private const float FISH_MIN_SPEED = 2;
     private const float FISH_MOVING_RIGHT_PERCENT_CHANCE = .5f;
     private const float FISH_MAX_Y = -2.8f;
     private const float FISH_MIN_Y = -4.5f;
@@ -84,7 +84,7 @@ public class Level : MonoBehaviour
                 speedModificator = speedModificator - waterMovingSpeed  >= 0 ? speedModificator - waterMovingSpeed : 1;
             }
             else goRight = false;
-            startPosition = new Vector3(goRight ? -CAMERA_X_SIZE / 2 - 4 : CAMERA_X_SIZE / 2 + 4, Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
+            startPosition = new Vector3(goRight ? -CAMERA_X_SIZE : CAMERA_X_SIZE , Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
 
 
             Transform fish = Instantiate(GameAsstes.GetInstance().pfFish[randomFishIndex], startPosition, Quaternion.identity);
@@ -96,7 +96,7 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < fishList.Count; i++)
         {
-            if (fishList[i].prefab.position.x > CAMERA_X_SIZE || fishList[i].prefab.position.x < CAMERA_X_SIZE)
+            if (fishList[i].prefab.position.x > CAMERA_X_SIZE || fishList[i].prefab.position.x < -CAMERA_X_SIZE)
             {
                 Destroy(fishList[i].prefab.gameObject);
                 fishList.Remove(fishList[i]);
