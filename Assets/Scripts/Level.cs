@@ -14,10 +14,12 @@ public class Level : MonoBehaviour
     // TODO: 
     // add to camera function or something
     // cameraSize = new Vector2(Camera.main.aspect* Camera.main.orthographicSize* 2f, Camera.main.orthographicSize* 2f);
-    //private const float CAMERA_X_SIZE = 4.62f;
-    //private const float CAMERA_Y_SIZE = 10f;
 
-    //background
+    // camera
+    private const float CAMERA_X_SIZE = 4.62f;
+    private const float CAMERA_Y_SIZE = 10f;
+
+    // background
     [SerializeField] private float skyMovingSpeed = 1;
     [SerializeField] private float skyHeight = 0;
     Background skyList;
@@ -27,8 +29,8 @@ public class Level : MonoBehaviour
     Background waterList;
 
     // fishes
-    private const float FISH_MAX_SPAWN_DELAY = 4;
-    private const float FISH_MIN_SPAWN_DELAY = 4;
+    private const float FISH_MAX_SPAWN_DELAY = 2;
+    private const float FISH_MIN_SPAWN_DELAY = 1;
     private const float FISH_MAX_SPEED = 4;
     private const float FISH_MIN_SPEED = 4;
     private const float FISH_MOVING_RIGHT_PERCENT_CHANCE = .5f;
@@ -81,13 +83,14 @@ public class Level : MonoBehaviour
             fishTimeSpawner = Random.Range(FISH_MIN_SPAWN_DELAY, FISH_MAX_SPAWN_DELAY);
             speedModificator = Random.Range(FISH_MIN_SPEED, FISH_MAX_SPEED);
             randomFishIndex = Random.Range(0, GameAsstes.GetInstance().pfFish.Count);
-            startPosition = new Vector3(0, Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
             if (Random.Range(0f, 1f) > FISH_MOVING_RIGHT_PERCENT_CHANCE)
             {
                 goRight = true;
                 speedModificator = speedModificator - waterMovingSpeed  >= 0 ? speedModificator - waterMovingSpeed : 1;
             }
             else goRight = false;
+            startPosition = new Vector3(goRight ? -CAMERA_X_SIZE / 2 - 4 : CAMERA_X_SIZE / 2 + 4, Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
+
 
             Transform fish = Instantiate(GameAsstes.GetInstance().pfFish[randomFishIndex], startPosition, Quaternion.identity);
             if (!goRight) fish.localScale = new Vector3(fish.localScale.x * -1, fish.localScale.y, fish.localScale.z);
@@ -96,9 +99,15 @@ public class Level : MonoBehaviour
     }
     public void FishMoving()
     {
-        foreach (Fish fish in fishList)
+        for (int i = 0; i < fishList.Count; i++)
         {
-            fish.Move();
+            if (fishList[i].prefab.position.x > CAMERA_X_SIZE / 2 + 4 || fishList[i].prefab.position.x < -(CAMERA_X_SIZE / 2 + 4))
+            {
+                Destroy(fishList[i].prefab.gameObject);
+                fishList.Remove(fishList[i]);
+                i--;
+            }
+            else fishList[i].Move();
         }
     }
 }

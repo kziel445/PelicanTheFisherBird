@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fish : IBackgroundElements
 {
-    private Transform prefab;
+    public Transform prefab;
     private float speedModificator;
     private Vector3 moveDirection;
 
@@ -15,7 +15,7 @@ public class Fish : IBackgroundElements
         if (goRight) moveDirection = new Vector3(1, 0, 0);
         else moveDirection = new Vector3(-1, 0, 0);
     }
-
+    
     public void Move()
     {
         prefab.position += moveDirection * speedModificator * Time.deltaTime;

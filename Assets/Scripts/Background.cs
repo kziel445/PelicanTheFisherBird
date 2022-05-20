@@ -24,7 +24,7 @@ public class Background : IBackgroundElements
             background.position += new Vector3(-1, 0, 0) * speedModificator * Time.deltaTime;
             if (background.position.x < leftBorder)
             {
-                background.position = new Vector3(rightBorder - .5f, background.position.y, background.position.z);
+                background.position = new Vector3(rightBorder - 1f, background.position.y, background.position.z);
             }
         }
     }
