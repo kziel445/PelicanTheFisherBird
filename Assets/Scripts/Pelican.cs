@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ruchchorzow : MonoBehaviour
+public class Pelican : MonoBehaviour
 
 {
     public Rigidbody2D rg;
@@ -23,15 +23,10 @@ public class ruchchorzow : MonoBehaviour
             {
                 Skok();
             }
-
         }
-        else
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-1f * Time.deltaTime, 0, 0, Space.World);
+            Debug.Log("siem");
         }
     }
     void Skok()
