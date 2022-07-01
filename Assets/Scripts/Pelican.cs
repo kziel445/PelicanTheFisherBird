@@ -7,11 +7,14 @@ public class Pelican : MonoBehaviour
 
 {
     public Rigidbody2D rg;
+    public Animator animator;
     public float silaskosku = 5f;
     [SerializeField] float jumpModificator = 2;
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -24,9 +27,12 @@ public class Pelican : MonoBehaviour
                 Skok();
             }
         }
+        if(Input.GetMouseButtonDown(0)) Skok();
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("siem");
+            //animator.SetBool("EatTrigger",true);
+            animator.Play("pelicanEat");
         }
     }
     void Skok()
