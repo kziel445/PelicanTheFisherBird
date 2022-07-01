@@ -472,5 +472,17 @@ PrefabInstance:
       propertyPath: pfSky
       value: 
       objectReference: {fileID: 188354460009114439, guid: ce1508e72feecad4893a4928872e736b, type: 3}
+    - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
+      propertyPath: pfFish.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
+      propertyPath: pfFish.Array.data[0]
+      value: 
+      objectReference: {fileID: 4307982140156097016, guid: 29f184a229434194cbd49b284bb53dda, type: 3}
+    - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
+      propertyPath: pfFish.Array.data[1]
+      value: 
+      objectReference: {fileID: 2059988951289041478, guid: e2711b611d3284741ac6af21eabfd183, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
