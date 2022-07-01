@@ -471,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
       propertyPath: pfSky
       value: 
-      objectReference: {fileID: 188354460009114439, guid: ce1508e72feecad4893a4928872e736b, type: 3}
+      objectReference: {fileID: 5345056531530981978, guid: af80bdc89ad3fe44b885b828824326fd, type: 3}
     - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
       propertyPath: pfFish.Array.size
       value: 2
