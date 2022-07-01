@@ -23,6 +23,7 @@ public class ruchchorzow : MonoBehaviour
             {
                 Skok();
             }
+
         }
         else
         {
