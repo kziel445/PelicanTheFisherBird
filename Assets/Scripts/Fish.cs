@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish : IBackgroundElements
+public class Fish : MonoBehaviour, IBackgroundElements
 {
     public Transform prefab;
     private float speedModificator;
@@ -19,5 +19,10 @@ public class Fish : IBackgroundElements
     public void Move()
     {
         prefab.position += moveDirection * speedModificator * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log($"Die!");
     }
 }

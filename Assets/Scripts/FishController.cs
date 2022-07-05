@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class FishController : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class FishController : MonoBehaviour
     int randomFishIndex;
     Vector3 startPosition;
     bool goRight;
+
+    public event EventHandler OnFishCatch;
 
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class FishController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OnFishCatch?.Invoke(this, EventArgs.Empty);
         FishMoving();
         FishGenerator();
     }
