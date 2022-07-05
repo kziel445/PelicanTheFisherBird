@@ -11,24 +11,15 @@ public class Level : MonoBehaviour
         return instance;
     }
 
-    // camera
-    private const float CAMERA_X_SIZE = 4.62f;
-
-    // background
-    [SerializeField] private float skyMovingSpeed = 1;
-    [SerializeField] private float skyHeight = 0;
     Background skyList;
-    
-    [SerializeField] private float waterMovingSpeed = 6;
-    [SerializeField] private float waterHeight = 0;
+
     Background waterList;
 
-    
 
     private void Awake()
     {
-        skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, skyMovingSpeed, skyHeight);
-        waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, waterMovingSpeed, waterHeight);
+        skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, Config.SKY_MOVING_SPEED, Config.SKY_HEIGHT);
+        waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, Config.WATER_MOVING_SPEED, Config.WATER_HEIGHT);
     }
     private void Update()
     {
