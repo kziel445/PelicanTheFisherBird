@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,6 +40,8 @@ public class Level : MonoBehaviour
     Vector3 startPosition;
     bool goRight;
 
+    public event EventHandler OnGamePlaying;
+
     private void Awake()
     {
         skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, skyMovingSpeed, skyHeight);
@@ -47,6 +50,7 @@ public class Level : MonoBehaviour
     }
     private void Update()
     {
+        OnGamePlaying?.Invoke(this, EventArgs.Empty);
         skyList.Move();
         waterList.Move();
         FishMoving();
