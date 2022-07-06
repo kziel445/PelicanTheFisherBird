@@ -7,9 +7,8 @@ public class Fish : MonoBehaviour, IBackgroundElements
 {
     private float speedModificator;
     private Vector3 moveDirection;
-    public event EventHandler OnFishDie;
 
-    public void FishParameters(float speedModification, bool goRight)
+    public void FishInit(float speedModification, bool goRight)
     {
         this.speedModificator = speedModification;
         if (goRight) moveDirection = new Vector3(1, 0, 0);
@@ -19,12 +18,5 @@ public class Fish : MonoBehaviour, IBackgroundElements
     public void Move()
     {
         transform.position += moveDirection * speedModificator * Time.deltaTime;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        OnFishDie?.Invoke(this, EventArgs.Empty);
-        Debug.Log($"Die!");
-        //Destroy(gameObject);
     }
 }
