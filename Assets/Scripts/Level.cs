@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class Level : MonoBehaviour
     Background waterList;
 
 
+    public event EventHandler OnGamePlaying;
+
     private void Awake()
     {
         skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, Config.SKY_MOVING_SPEED, Config.SKY_HEIGHT);
@@ -23,6 +26,7 @@ public class Level : MonoBehaviour
     }
     private void Update()
     {
+        OnGamePlaying?.Invoke(this, EventArgs.Empty);
         skyList.Move();
         waterList.Move();
     }

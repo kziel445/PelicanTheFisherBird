@@ -318,10 +318,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7253107273085022202, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7253107273085022205, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -567,11 +563,11 @@ PrefabInstance:
     - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
       propertyPath: pfFish.Array.data[0]
       value: 
-      objectReference: {fileID: 4307982140156097016, guid: 29f184a229434194cbd49b284bb53dda, type: 3}
+      objectReference: {fileID: 8337970464993777287, guid: de8458ead8ace2e4ca44321ad4eb367b, type: 3}
     - target: {fileID: 9107216470766045061, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
       propertyPath: pfFish.Array.data[1]
       value: 
-      objectReference: {fileID: 2059988951289041478, guid: e2711b611d3284741ac6af21eabfd183, type: 3}
+      objectReference: {fileID: 895637072196638916, guid: 7821a964ca65a1c41a790b99ed2e484b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
 --- !u!4 &9107216469988163220 stripped
