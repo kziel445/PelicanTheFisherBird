@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Points : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int points;
+
+    private void Awake()
     {
-        
+        points = 0;
+        Pelican.GetInstance().EatenFish += EatenFish_GetPoints;
+    }
+    private void EatenFish_GetPoints(object sender, Transform e)
+    {
+        Debug.Log("Points +1");
+        // points += transform
     }
 
-    // Update is called once per frame
     void Update()
     {
         
