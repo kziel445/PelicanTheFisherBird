@@ -14,7 +14,7 @@ public class Points : MonoBehaviour
     private void EatenFish_GetPoints(object sender, Transform e)
     {
         Debug.Log("Points +1");
-        // points += transform
+        points += 1;
     }
 
     void Update()

@@ -65,9 +65,12 @@ public sealed class FishController : MonoBehaviour
 
             Transform fish = Instantiate(GameAsstes.GetInstance()
                 .pfFish[randomFishIndex], startPosition, Quaternion.identity);
+
+            int fishValue = randomFishIndex;
+
             Fish fishComponent = fish.GetComponentInChildren<Fish>() ?
                 fish.GetComponentInChildren<Fish>() : fish.gameObject.AddComponent<Fish>();
-            fishComponent.FishInit(speedModificator, goRight);
+            fishComponent.FishInit(speedModificator, fishValue, goRight);
 
 
             if (!goRight) fish.localScale = 
