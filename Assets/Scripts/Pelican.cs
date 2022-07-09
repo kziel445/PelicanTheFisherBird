@@ -35,17 +35,18 @@ public class Pelican : MonoBehaviour
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began
+                && touch.position.y > Config.PELICAN_EAT_HEIGHT)
             {
                 Skok();
             }
-        }
-        if(Input.GetMouseButtonDown(0)) Skok();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("siem");
-            //animator.SetBool("EatTrigger",true);
-            animator.Play("pelicanEat");
+            else if(touch.phase == TouchPhase.Began
+                && touch.position.y <= Config.PELICAN_EAT_HEIGHT)
+            {
+
+                Debug.Log(touch.position.y);
+                Eat();
+            }
         }
     }
     void Skok()
@@ -53,6 +54,11 @@ public class Pelican : MonoBehaviour
         rg.velocity = Vector2.zero;
         rg.AddForce(new Vector2(0, silaskosku), ForceMode2D.Impulse);
     }
+    void Eat()
+    {
+        animator.Play("pelicanEat");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         EatenFish?.Invoke(this, other.transform);

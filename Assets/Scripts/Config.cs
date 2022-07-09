@@ -22,4 +22,7 @@ public static class Config
 
     // camera
     public const float CAMERA_X_SIZE = 4.62f;
+
+    // pelican
+    public const float PELICAN_EAT_HEIGHT = 400;
 }
