@@ -13,8 +13,10 @@ public class Points : MonoBehaviour
     }
     private void EatenFish_GetPoints(object sender, Transform e)
     {
-        Debug.Log("Points +1");
-        points += 1;
+        
+        var fishComp = e.gameObject.GetComponent<Fish>();
+        Debug.Log("Points +" + fishComp.fishValue);
+        points += fishComp.fishValue;
     }
 
     void Update()
