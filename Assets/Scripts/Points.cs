@@ -20,9 +20,11 @@ public class Points : MonoBehaviour
     }
     private void Start()
     {
-        points = 0;
-        // pointsText = GetComponentInChildren<TextMeshProUGUI>();
+        pointsText = GetComponentInChildren<TextMeshProUGUI>();
         Pelican.GetInstance().EatenFish += EatenFish_GetPoints;
+
+        points = 0;
+        AddPoints(0);
     }
     private void EatenFish_GetPoints(object sender, Transform e)
     {
