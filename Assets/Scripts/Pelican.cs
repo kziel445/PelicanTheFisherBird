@@ -52,7 +52,6 @@ public class Pelican : MonoBehaviour
                 Catch();
             }
         }
-
     }
     void Skok()
     {
@@ -63,19 +62,16 @@ public class Pelican : MonoBehaviour
     {
         collider.enabled = true;
         animator.Play("pelicanEat");
-
-        //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-        //    Debug.Log("not playing");
-        //else
-        //    Debug.Log("playing");
     }
-    void EatOrMiss()
+    // used with animation event
+    void TunrOffCollieder()
     {
         collider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        TunrOffCollieder();
         EatenFish?.Invoke(this, other.transform);
     }
 }

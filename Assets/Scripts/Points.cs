@@ -28,10 +28,8 @@ public class Points : MonoBehaviour
     }
     private void EatenFish_GetPoints(object sender, Transform e)
     {
-        
         var fishComp = e.gameObject.GetComponent<Fish>();
         AddPoints(fishComp.fishValue);
-        
     }
     public void AddPoints(int pointValue)
     {
