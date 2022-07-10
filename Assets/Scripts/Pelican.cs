@@ -16,6 +16,7 @@ public class Pelican : MonoBehaviour
     public Rigidbody2D rg;
     public Animator animator;
     public float silaskosku = 5f;
+    private Collider2D collider;
     [SerializeField] float jumpModificator = 2;
 
     public event EventHandler<Transform> EatenFish;
@@ -28,6 +29,9 @@ public class Pelican : MonoBehaviour
     {
         rg = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        collider = GetComponent<BoxCollider2D>();
+        collider.enabled = false;
+
     }
 
     void Update()
@@ -45,18 +49,29 @@ public class Pelican : MonoBehaviour
             {
 
                 Debug.Log(touch.position.y);
-                Eat();
+                Catch();
             }
         }
+
     }
     void Skok()
     {
         rg.velocity = Vector2.zero;
         rg.AddForce(new Vector2(0, silaskosku), ForceMode2D.Impulse);
     }
-    void Eat()
+    void Catch()
     {
+        collider.enabled = true;
         animator.Play("pelicanEat");
+
+        //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        //    Debug.Log("not playing");
+        //else
+        //    Debug.Log("playing");
+    }
+    void EatOrMiss()
+    {
+        collider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
