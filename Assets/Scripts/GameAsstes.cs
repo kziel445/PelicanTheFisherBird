@@ -19,6 +19,4 @@ public class GameAsstes : MonoBehaviour
     {
         instance = this;
     }
-
-    
 }
