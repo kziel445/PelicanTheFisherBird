@@ -12,25 +12,34 @@ public class Level : MonoBehaviour
         return instance;
     }
 
+    private State state;
+
     Background skyList;
 
     Background waterList;
 
-
     public event EventHandler OnGamePlaying;
+    public enum State
+    {
+        WaitingToStart,
+        Playing,
+        Dead
+    }
 
     private void Awake()
     {
         skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, Config.SKY_MOVING_SPEED, Config.SKY_HEIGHT);
         waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, Config.WATER_MOVING_SPEED, Config.WATER_HEIGHT);
+        state = State.WaitingToStart;
+    }
+    private void Start()
+    {
     }
     private void Update()
     {
-        OnGamePlaying?.Invoke(this, EventArgs.Empty);
         skyList.Move();
         waterList.Move();
     }
-
     // create backgrounds from 2 the same prefabs(only works when one prefab size > screen size)
     public Background SpawnInitialBackgrounds(Transform prefab, float speedModificator, float height)
     {
