@@ -20,6 +20,7 @@ public sealed class FishController : MonoBehaviour
     int randomFishIndex;
     Vector3 startPosition;
     bool goRight;
+    bool isPlaying = false;
 
     private void Awake()
     {
@@ -30,17 +31,25 @@ public sealed class FishController : MonoBehaviour
     void Start()
     {
         Pelican.GetInstance().EatenFish += EatenFish_RemoveFish;
+        Pelican.GetInstance().OnStartedPlaying += OnStartedPlaing_StartGenerator;
+    }
+    
+    void Update()
+    {
+        if(isPlaying)
+        {
+            FishMoving();
+            FishGenerator();
+        }
     }
     private void EatenFish_RemoveFish(object sender, Transform e)
     {
         RemoveFish(e);
         Debug.Log($"Die!");
     }
-    // Update is called once per frame
-    void Update()
+    private void OnStartedPlaing_StartGenerator(object sender, EventArgs e)
     {
-        FishMoving();
-        FishGenerator();
+        isPlaying = true;
     }
     // all values based random const values min/max,
     // speedModificator changed(speedModificator - waterSpeedModificator) when going right(going upstream),
