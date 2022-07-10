@@ -56,9 +56,9 @@ public class Pelican : MonoBehaviour
                 PlayingInputs();
                 break;
             case State.Dead:
-                // not implemented
                 break;
         }
+        if (Config.PELICAN_DEATH_HEIGHT > transform.position.y) Die();
     }
     void WaitingInputs()
     {
@@ -100,6 +100,11 @@ public class Pelican : MonoBehaviour
     {
         collider.enabled = true;
         animator.Play("pelicanEat");
+    }
+    void Die()
+    {
+        state = State.Dead;
+        rg.bodyType = RigidbodyType2D.Static;
     }
     // used with animation event
     void TunrOffCollieder()
