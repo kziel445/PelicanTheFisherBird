@@ -106,6 +106,7 @@ public class Pelican : MonoBehaviour
     {
         state = State.Dead;
         rg.bodyType = RigidbodyType2D.Static;
+        OnDie?.Invoke(this, EventArgs.Empty);
     }
     // used with animation event
     void TunrOffCollieder()
