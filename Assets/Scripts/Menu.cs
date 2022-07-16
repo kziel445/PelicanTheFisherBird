@@ -5,21 +5,37 @@ using UnityEngine;
 public class Menu : MonoBehaviour
 {
     Transform pauseWindow;
+    Transform restartButton;
     private void Awake()
     {
         pauseWindow = transform.GetChild(0).Find("PauseWindow");
         PauseWindowOff();
+
+        restartButton = transform.GetChild(0).Find("RestartButton");
     }
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Pelican.GetInstance().OnDie += null;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void RestartGame()
+    {
+        Debug.Log("Restart game");
+    }
+    public void RestartButtonOn()
+    {
+        restartButton.gameObject.SetActive(true);
+    }
+    public void RestartButtonOff()
+    {
+        restartButton.gameObject.SetActive(false);
     }
     public void PauseButton()
     {

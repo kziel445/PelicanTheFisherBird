@@ -22,6 +22,8 @@ public class Pelican : MonoBehaviour
 
     public event EventHandler<Transform> EatenFish;
     public event EventHandler OnStartedPlaying;
+    public event EventHandler OnDie;
+
     public enum State
     {
         WaitingToStart,
@@ -41,7 +43,6 @@ public class Pelican : MonoBehaviour
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
         collider.enabled = false;
-
     }
 
     void Update()
