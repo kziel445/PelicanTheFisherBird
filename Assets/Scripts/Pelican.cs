@@ -22,6 +22,8 @@ public class Pelican : MonoBehaviour
 
     public event EventHandler<Transform> EatenFish;
     public event EventHandler OnStartedPlaying;
+    public event EventHandler OnDie;
+
     public enum State
     {
         WaitingToStart,
@@ -41,7 +43,6 @@ public class Pelican : MonoBehaviour
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
         collider.enabled = false;
-
     }
 
     void Update()
@@ -54,11 +55,12 @@ public class Pelican : MonoBehaviour
                 break;
             case State.Playing:
                 PlayingInputs();
+                if (Config.PELICAN_DEATH_HEIGHT > transform.position.y) Die();
                 break;
             case State.Dead:
-                // not implemented
                 break;
         }
+        
     }
     void WaitingInputs()
     {
@@ -100,6 +102,12 @@ public class Pelican : MonoBehaviour
     {
         collider.enabled = true;
         animator.Play("pelicanEat");
+    }
+    void Die()
+    {
+        state = State.Dead;
+        rg.bodyType = RigidbodyType2D.Static;
+        OnDie?.Invoke(this, EventArgs.Empty);
     }
     // used with animation event
     void TunrOffCollieder()
