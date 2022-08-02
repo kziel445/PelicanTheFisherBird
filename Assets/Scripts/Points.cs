@@ -37,6 +37,7 @@ public class Points : MonoBehaviour
     private void OnDie_UpdateHighScore(object sender, EventArgs e)
     {
         if (PlayerPrefs.GetInt("highScore") < points) PlayerPrefs.SetInt("highScore", points);
+        highScoreText.text = GetHighScore();
     }
 
     private void EatenFish_GetPoints(object sender, Transform e)
@@ -50,6 +51,10 @@ public class Points : MonoBehaviour
         points += pointValue;
         pointsText.text = points.ToString("D4");
     }
+    public void OpenHighScoreWindow()
+    {
+
+    }
     public string GetHighScore()
     {
         return "HIGHSCORE: " + PlayerPrefs.GetInt("highScore").ToString("D4");
@@ -57,8 +62,5 @@ public class Points : MonoBehaviour
     public void SetHighScore(int score)
     {
         PlayerPrefs.SetInt("highScore", score);
-    }
-    void Update()
-    {
     }
 }
