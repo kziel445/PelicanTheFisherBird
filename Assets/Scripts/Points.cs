@@ -17,6 +17,9 @@ public class Points : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     private TextMeshProUGUI[] scores;
 
+    private RectTransform newHighScore;
+    private RectTransform currentHighScore;
+
     private void Awake()
     {
         instance = this;
@@ -27,6 +30,14 @@ public class Points : MonoBehaviour
         pointsText = scores[0];
         highScoreText = scores[1];
 
+        // indexes 4 and 3 becouse 0 is canvas 1 & 2 are texts, first its need to deactivate 4 index
+        // becouse otherwise it should take 2 times 3rd index
+        currentHighScore = GetComponentsInChildren<RectTransform>()[4];
+        currentHighScore.gameObject.SetActive(false);
+        newHighScore = GetComponentsInChildren<RectTransform>()[3];
+        newHighScore.gameObject.SetActive(false);
+        
+
         Pelican.GetInstance().EatenFish += EatenFish_GetPoints;
         Pelican.GetInstance().OnDie += OnDie_UpdateHighScore;
         highScoreText.text = GetHighScore();
@@ -36,8 +47,19 @@ public class Points : MonoBehaviour
 
     private void OnDie_UpdateHighScore(object sender, EventArgs e)
     {
-        if (PlayerPrefs.GetInt("highScore") < points) PlayerPrefs.SetInt("highScore", points);
-        highScoreText.text = GetHighScore();
+        if (PlayerPrefs.GetInt("highScore") < points)
+        {
+            PlayerPrefs.SetInt("highScore", points);
+            OpenHighScoreWindow(newHighScore, points);
+            
+            newHighScore.GetComponent<TextMeshProUGUI>().text.Split("\n")[1] = points.ToString("D4");
+        }
+        else
+        {
+            OpenHighScoreWindow(currentHighScore, PlayerPrefs.GetInt("highScore"));
+            currentHighScore.GetComponent<TextMeshProUGUI>().text.Split("\n")[1] = points.ToString("D4");
+        }
+        
     }
 
     private void EatenFish_GetPoints(object sender, Transform e)
@@ -51,9 +73,12 @@ public class Points : MonoBehaviour
         points += pointValue;
         pointsText.text = points.ToString("D4");
     }
-    public void OpenHighScoreWindow()
+    public void OpenHighScoreWindow(RectTransform transform, int highScore)
     {
-
+        transform.gameObject.SetActive(true);
+        var lines = transform.GetComponent<TextMeshProUGUI>().text.Split("\n");
+        lines[1] = highScore.ToString("D4");
+        transform.GetComponent<TextMeshProUGUI>().text = string.Join("\n", lines);
     }
     public string GetHighScore()
     {

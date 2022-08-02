@@ -55,11 +55,12 @@ public class Pelican : MonoBehaviour
                 break;
             case State.Playing:
                 PlayingInputs();
+                if (Config.PELICAN_DEATH_HEIGHT > transform.position.y) Die();
                 break;
             case State.Dead:
                 break;
         }
-        if (Config.PELICAN_DEATH_HEIGHT > transform.position.y) Die();
+        
     }
     void WaitingInputs()
     {
