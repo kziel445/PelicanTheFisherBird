@@ -87,7 +87,8 @@ public class Pelican : MonoBehaviour
                 Skok();
             }
             else if (touch.phase == TouchPhase.Began
-                && touch.position.y <= Config.PELICAN_EAT_HEIGHT)
+                && touch.position.y <= Config.PELICAN_EAT_HEIGHT
+                && !animator.GetCurrentAnimatorStateInfo(0).IsName("pelicanEat"))
             {
                 Catch();
             }
