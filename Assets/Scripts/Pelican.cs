@@ -17,7 +17,6 @@ public class Pelican : MonoBehaviour
     public Animator animator;
     public float silaskosku = 5f;
     private Collider2D collider;
-    [SerializeField] float jumpModificator = 2;
     private State state;
 
     public event EventHandler<Transform> EatenFish;

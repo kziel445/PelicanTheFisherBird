@@ -12,25 +12,14 @@ public class Level : MonoBehaviour
         return instance;
     }
 
-    private State state;
-
     Background skyList;
 
     Background waterList;
-
-    public event EventHandler OnGamePlaying;
-    public enum State
-    {
-        WaitingToStart,
-        Playing,
-        Dead
-    }
 
     private void Awake()
     {
         skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, Config.SKY_MOVING_SPEED, Config.SKY_HEIGHT);
         waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, Config.WATER_MOVING_SPEED, Config.WATER_HEIGHT);
-        state = State.WaitingToStart;
     }
     private void Start()
     {
