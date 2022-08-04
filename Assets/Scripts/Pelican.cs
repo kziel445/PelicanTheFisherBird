@@ -102,7 +102,7 @@ public class Pelican : MonoBehaviour
     void Catch()
     {
         collider.enabled = true;
-        animator.Play("pelicanEat");
+        animator.Play("PelicanCatching");
     }
     void Die()
     {
@@ -119,6 +119,7 @@ public class Pelican : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         TunrOffCollider();
+        animator.Play("PelicanEat");
         EatenFish?.Invoke(this, other.transform);
     }
 }
