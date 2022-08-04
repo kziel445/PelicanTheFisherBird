@@ -85,6 +85,7 @@ public class Pelican : MonoBehaviour
             {
                 Skok();
             }
+            // touch beneath eat_height and eating animation didnt started
             else if (touch.phase == TouchPhase.Began
                 && touch.position.y <= Config.PELICAN_EAT_HEIGHT
                 && !animator.GetCurrentAnimatorStateInfo(0).IsName("pelicanEat"))
@@ -110,14 +111,14 @@ public class Pelican : MonoBehaviour
         OnDie?.Invoke(this, EventArgs.Empty);
     }
     // used with animation event
-    void TunrOffCollieder()
+    void TunrOffCollider()
     {
         collider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TunrOffCollieder();
+        TunrOffCollider();
         EatenFish?.Invoke(this, other.transform);
     }
 }
