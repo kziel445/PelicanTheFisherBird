@@ -101,7 +101,7 @@ public class Pelican : MonoBehaviour
     {
         rg.velocity = Vector2.zero;
         rg.AddForce(new Vector2(0, silaskosku), ForceMode2D.Impulse);
-        wingAnimator.Play("Fly");
+        wingAnimator.Play("Fly", -1, 0f);
     }
     void Catch()
     {
