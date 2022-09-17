@@ -41,7 +41,7 @@ public class Pelican : MonoBehaviour
         rg.bodyType = RigidbodyType2D.Static;
 
         animator = GetComponent<Animator>();
-        wingAnimator = transform.GetChild(0).GetComponent<Animator>();
+        wingAnimator = transform.GetChild(1).GetComponent<Animator>();
 
         collider = GetComponent<BoxCollider2D>();
         collider.enabled = false;
@@ -101,7 +101,7 @@ public class Pelican : MonoBehaviour
     {
         rg.velocity = Vector2.zero;
         rg.AddForce(new Vector2(0, silaskosku), ForceMode2D.Impulse);
-        wingAnimator.Play("Fly", -1, 0f);
+        wingAnimator.Play("WingFly", -1, 0f);
     }
     void Catch()
     {
