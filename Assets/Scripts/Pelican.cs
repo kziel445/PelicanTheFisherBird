@@ -97,12 +97,17 @@ public class Pelican : MonoBehaviour
             }
         }
     }
-    void Skok()
+    // used in animation event
+    public void AddForce()
     {
         rg.velocity = Vector2.zero;
         rg.AddForce(new Vector2(0, silaskosku), ForceMode2D.Impulse);
-        wingAnimator.Play("WingFly", -1, 0f);
     }
+    public void Skok()
+    {
+        wingAnimator.Play("WingFly", -1, 0f);
+    }    
+
     void Catch()
     {
         collider.enabled = true;

@@ -693,6 +693,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2649830736280538139, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649830736280538139, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -759,6 +763,22 @@ PrefabInstance:
     - target: {fileID: 7253107273085022203, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253107273085022204, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
+      propertyPath: m_Size.x
+      value: 18.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253107273085022204, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
+      propertyPath: m_Size.y
+      value: 13.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253107273085022204, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 67c6515ba64635241affacee1693c092, type: 3}
+    - target: {fileID: 7253107273085022204, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7253107273085022205, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_RootOrder
@@ -950,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564088189}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -2.82, y: 0.44, z: 0}
+  m_LocalPosition: {x: -2.82, y: 0.44, z: 1.44}
   m_LocalScale: {x: 3.260275, y: 1, z: 1.085764}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1609,7 +1629,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 99f648f0082c13244912e8a145448ab9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0407120fa2b33c34ea1d6f74bd506f1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
