@@ -18,7 +18,7 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {
-        skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, Config.SKY_MOVING_SPEED, Config.SKY_HEIGHT);
+        // skyList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfSky, Config.SKY_MOVING_SPEED, Config.SKY_HEIGHT);
         waterList = SpawnInitialBackgrounds(GameAsstes.GetInstance().pfWater, Config.WATER_MOVING_SPEED, Config.WATER_HEIGHT);
     }
     private void Start()
@@ -26,7 +26,7 @@ public class Level : MonoBehaviour
     }
     private void Update()
     {
-        skyList.Move();
+        // skyList.Move();
         waterList.Move();
     }
     // create backgrounds from 2 the same prefabs(only works when one prefab size > screen size)
