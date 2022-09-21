@@ -739,6 +739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3264676309833309398, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
+      propertyPath: m_Name
+      value: PelicanBody
+      objectReference: {fileID: 0}
     - target: {fileID: 3772079520919600615, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_Size.x
       value: 18.01
@@ -750,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 3772079520919600615, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 98aa153b569ceed45ae24ebaba83d203, type: 3}
+      objectReference: {fileID: 21300000, guid: d7c0dea4a19d26b4d8dc92d76039b7f3, type: 3}
     - target: {fileID: 3772079520919600615, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -758,7 +762,7 @@ PrefabInstance:
     - target: {fileID: 7253107273085022204, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d7c0dea4a19d26b4d8dc92d76039b7f3, type: 3}
+      objectReference: {fileID: 21300000, guid: 98aa153b569ceed45ae24ebaba83d203, type: 3}
     - target: {fileID: 7253107273085022205, guid: 48a1a649a7e97824181ed8d8d8e4ae87, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1392,17 +1396,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2104360525, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104360525, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2104360525, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
+    - target: {fileID: 2104360526, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
+      propertyPath: ScrollSpeed
+      value: -0.008
       objectReference: {fileID: 0}
     - target: {fileID: 9107216470745504081, guid: 765596f9b30d5774ab609f26d2bd8fa2, type: 3}
       propertyPath: m_RootOrder
