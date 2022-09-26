@@ -10,10 +10,10 @@ public class Menu : MonoBehaviour
     Transform restartButton;
     private void Awake()
     {
-        pauseWindow = transform.GetChild(0).GetChild(1).Find("PauseWindow");
+        pauseWindow = transform.GetChild(0).Find("PauseWindow");
         PauseWindowOff();
 
-        restartButton = transform.GetChild(0).GetChild(1).Find("RestartButton");
+        restartButton = transform.GetChild(0).Find("RestartButton");
         RestartButtonOff();
     }
     
