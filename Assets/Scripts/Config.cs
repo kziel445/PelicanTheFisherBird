@@ -25,5 +25,5 @@ public static class Config
 
     // pelican
     public const float PELICAN_EAT_HEIGHT = 400;
-    public const float PELICAN_DEATH_HEIGHT = -2.5f;
+    public const float PELICAN_DEATH_HEIGHT = -2f;
 }
