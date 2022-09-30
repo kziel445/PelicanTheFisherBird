@@ -15,6 +15,7 @@ public class Pelican : MonoBehaviour
 
     public Rigidbody2D rg;
     public Animator animator;
+    public Animator wingAnimator;
     public float silaskosku = 5f;
     private Collider2D collider;
     private State state;
@@ -40,6 +41,8 @@ public class Pelican : MonoBehaviour
         rg.bodyType = RigidbodyType2D.Static;
 
         animator = GetComponent<Animator>();
+        wingAnimator = transform.GetChild(1).GetComponent<Animator>();
+
         collider = GetComponent<BoxCollider2D>();
         collider.enabled = false;
     }
@@ -85,6 +88,7 @@ public class Pelican : MonoBehaviour
             {
                 Skok();
             }
+            // touch beneath eat_height and eating animation didnt started
             else if (touch.phase == TouchPhase.Began
                 && touch.position.y <= Config.PELICAN_EAT_HEIGHT
                 && !animator.GetCurrentAnimatorStateInfo(0).IsName("pelicanEat"))
@@ -93,15 +97,22 @@ public class Pelican : MonoBehaviour
             }
         }
     }
-    void Skok()
+    // used in animation event
+    public void AddForce()
     {
         rg.velocity = Vector2.zero;
         rg.AddForce(new Vector2(0, silaskosku), ForceMode2D.Impulse);
     }
+    public void Skok()
+    {
+        wingAnimator.Play("WingFly", -1, 0f);
+    }    
+
     void Catch()
     {
         collider.enabled = true;
-        animator.Play("pelicanEat");
+        animator.Play("PelicanCatching",-1,0f);
+
     }
     void Die()
     {
@@ -110,14 +121,15 @@ public class Pelican : MonoBehaviour
         OnDie?.Invoke(this, EventArgs.Empty);
     }
     // used with animation event
-    void TunrOffCollieder()
+    void TunrOffCollider()
     {
         collider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TunrOffCollieder();
+        TunrOffCollider();
+        animator.Play("PelicanEat");
         EatenFish?.Invoke(this, other.transform);
     }
 }

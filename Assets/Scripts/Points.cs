@@ -32,9 +32,9 @@ public class Points : MonoBehaviour
 
         // indexes 4 and 3 becouse 0 is canvas 1 & 2 are texts, first its need to deactivate 4 index
         // becouse otherwise it should take 2 times 3rd index
-        currentHighScore = GetComponentsInChildren<RectTransform>()[4];
+        currentHighScore = GetComponentsInChildren<RectTransform>()[5];
         currentHighScore.gameObject.SetActive(false);
-        newHighScore = GetComponentsInChildren<RectTransform>()[3];
+        newHighScore = GetComponentsInChildren<RectTransform>()[4];
         newHighScore.gameObject.SetActive(false);
         
 
