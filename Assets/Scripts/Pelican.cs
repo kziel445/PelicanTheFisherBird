@@ -17,7 +17,7 @@ public class Pelican : MonoBehaviour
     public Animator animator;
     public Animator wingAnimator;
     public float silaskosku = 5f;
-    private Collider2D collider;
+    private Collider2D pelicanCollider;
     private State state;
 
     public event EventHandler<Transform> EatenFish;
@@ -43,8 +43,8 @@ public class Pelican : MonoBehaviour
         animator = GetComponent<Animator>();
         wingAnimator = transform.GetChild(1).GetComponent<Animator>();
 
-        collider = GetComponent<BoxCollider2D>();
-        collider.enabled = false;
+        pelicanCollider = GetComponent<BoxCollider2D>();
+        pelicanCollider.enabled = false;
     }
 
     void Update()
@@ -62,7 +62,6 @@ public class Pelican : MonoBehaviour
             case State.Dead:
                 break;
         }
-        
     }
     void WaitingInputs()
     {
@@ -110,7 +109,7 @@ public class Pelican : MonoBehaviour
 
     void Catch()
     {
-        collider.enabled = true;
+        pelicanCollider.enabled = true;
         animator.Play("PelicanCatching",-1,0f);
 
     }
@@ -123,7 +122,7 @@ public class Pelican : MonoBehaviour
     // used with animation event
     void TunrOffCollider()
     {
-        collider.enabled = false;
+        pelicanCollider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
