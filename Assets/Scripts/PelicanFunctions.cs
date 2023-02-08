@@ -9,4 +9,8 @@ public class PelicanFunctions : MonoBehaviour
     {
         Pelican.GetInstance().AddForce();
     }
+    public void TurnOffCollider()
+    {
+        Pelican.GetInstance().TunrOffCollider();
+    }
 }

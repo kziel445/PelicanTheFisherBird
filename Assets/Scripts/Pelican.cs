@@ -41,8 +41,8 @@ public class Pelican : MonoBehaviour
         rg = GetComponent<Rigidbody2D>();
         rg.bodyType = RigidbodyType2D.Static;
 
-        animator = GetComponent<Animator>();
-        wingAnimator = transform.GetChild(1).GetComponent<Animator>();
+        animator = transform.GetChild(1).GetComponent<Animator>();
+        wingAnimator = transform.GetChild(0).GetComponent<Animator>();
 
         collider = GetComponent<BoxCollider2D>();
         collider.enabled = false;
@@ -125,7 +125,7 @@ public class Pelican : MonoBehaviour
         OnDie?.Invoke(this, EventArgs.Empty);
     }
     // used with animation event
-    void TunrOffCollider()
+    public void TunrOffCollider()
     {
         collider.enabled = false;
     }
