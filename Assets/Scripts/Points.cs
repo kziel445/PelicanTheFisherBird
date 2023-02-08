@@ -13,8 +13,8 @@ public class Points : MonoBehaviour
     }
 
     private int points;
-    public TextMeshProUGUI pointsText;
-    public TextMeshProUGUI highScoreText;
+    private TextMeshProUGUI pointsText;
+    private TextMeshProUGUI highScoreText;
     private TextMeshProUGUI[] scores;
 
     private RectTransform newHighScore;

@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         WaterLevel = waterHeight.position.y;
+        waterHeight.gameObject.SetActive(false);
     }
 
 
