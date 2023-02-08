@@ -3,29 +3,42 @@ using System.Collections.Generic;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+namespace Controllers
 {
-    public Transform waterHeight;
-    private float waterLevel;
-    private bool waterInitialized = false;
-    public float WaterLevel
+   public class GameController : MonoBehaviour
     {
-        get { return waterLevel;}
-        private set 
+        private static GameController instance;
+        public static GameController GetInstance()
         {
-            if (!waterInitialized)
+            return instance;
+        }
+
+        public Transform waterHeight;
+        public bool controlLineState = false;
+        private float waterLevel;
+        private bool waterInitialized = false;
+        public float WaterLevel
+        {
+            get { return waterLevel; }
+            private set
             {
-                waterLevel = value;
-                waterInitialized = true;
+                if (!waterInitialized)
+                {
+                    waterLevel = value;
+                    waterInitialized = true;
+                }
             }
         }
-    }
 
-    private void Awake()
-    {
-        WaterLevel = waterHeight.position.y;
-        waterHeight.gameObject.SetActive(false);
-    }
+        private void Awake()
+        {
+            instance = this;
+            WaterLevel = waterHeight.position.y;
+            waterHeight.gameObject.SetActive(controlLineState);
+        }
+        public void Test()
+        {}
 
+    }
 
 }

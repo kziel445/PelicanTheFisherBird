@@ -1340,6 +1340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlLine
       objectReference: {fileID: 0}
+    - target: {fileID: 5530811407956963106, guid: 9aef1aaff08ff8a43b14f30eed6d270f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9081606227719781310, guid: 9aef1aaff08ff8a43b14f30eed6d270f, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.15044996
@@ -1498,3 +1502,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterHeight: {fileID: 3719663476425844088}
+  testNe: 0
