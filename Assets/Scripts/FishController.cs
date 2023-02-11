@@ -14,6 +14,15 @@ public sealed class FishController : MonoBehaviour
         return instance;
     }
 
+    // fishes
+    public const float FISH_MAX_SPAWN_DELAY = 4;
+    public const float FISH_MIN_SPAWN_DELAY = 2;
+    public const float FISH_MAX_SPEED = 4;
+    public const float FISH_MIN_SPEED = 2;
+    public const float FISH_MOVING_RIGHT_PERCENT_CHANCE = .5f;
+    public const float FISH_MAX_Y = -2.5f;
+    public const float FISH_MIN_Y = -4f;
+
     private List<Transform> fishList;
     float fishTimeSpawner;
     float speedModificator;
@@ -59,17 +68,18 @@ public sealed class FishController : MonoBehaviour
         fishTimeSpawner -= Time.deltaTime;
         if (fishTimeSpawner < 0)
         {
-            fishTimeSpawner = Random.Range(Config.FISH_MIN_SPAWN_DELAY, Config.FISH_MAX_SPAWN_DELAY);
-            speedModificator = Random.Range(Config.FISH_MIN_SPEED, Config.FISH_MAX_SPEED);
+            fishTimeSpawner = Random.Range(FISH_MIN_SPAWN_DELAY, FISH_MAX_SPAWN_DELAY);
+            speedModificator = Random.Range(FISH_MIN_SPEED, FISH_MAX_SPEED);
             randomFishIndex = Random.Range(0, GameAsstes.GetInstance().pfFish.Count);
 
-            if (Random.Range(0f, 1f) > Config.FISH_MOVING_RIGHT_PERCENT_CHANCE)
+            if (Random.Range(0f, 1f) > FISH_MOVING_RIGHT_PERCENT_CHANCE)
             {
+                goRight = true;
                 goRight = true;
                 speedModificator = speedModificator - Config.WATER_MOVING_SPEED >= 0 ? speedModificator - Config.WATER_MOVING_SPEED : 1;
             }
             else goRight = false;
-            startPosition = new Vector3(goRight ? -Config.CAMERA_X_SIZE : Config.CAMERA_X_SIZE, Random.Range(Config.FISH_MIN_Y, Config.FISH_MAX_Y), 0);
+            startPosition = new Vector3(goRight ? -Config.CAMERA_X_SIZE : Config.CAMERA_X_SIZE, Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
 
 
             Transform fish = Instantiate(GameAsstes.GetInstance()
