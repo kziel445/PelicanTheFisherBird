@@ -1,3 +1,4 @@
+using Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ public sealed class FishController : MonoBehaviour
     public const float FISH_MAX_SPEED = 4;
     public const float FISH_MIN_SPEED = 2;
     public const float FISH_MOVING_RIGHT_PERCENT_CHANCE = .5f;
-    public const float FISH_MAX_Y = -2.5f;
+    // public const float FISH_MAX_Y = -2.5f;
     public const float FISH_MIN_Y = -4f;
 
     private List<Transform> fishList;
@@ -79,7 +80,7 @@ public sealed class FishController : MonoBehaviour
                 speedModificator = speedModificator - Config.WATER_MOVING_SPEED >= 0 ? speedModificator - Config.WATER_MOVING_SPEED : 1;
             }
             else goRight = false;
-            startPosition = new Vector3(goRight ? -Config.CAMERA_X_SIZE : Config.CAMERA_X_SIZE, Random.Range(FISH_MIN_Y, FISH_MAX_Y), 0);
+            startPosition = new Vector3(goRight ? -Config.CAMERA_X_SIZE : Config.CAMERA_X_SIZE, Random.Range(FISH_MIN_Y, GameController.GetInstance().WaterLevel), 0);
 
 
             Transform fish = Instantiate(GameAsstes.GetInstance()
